@@ -1,4 +1,4 @@
-public class Animal {
+public abstract class Animal {
 
     //필드
     String name;
@@ -17,7 +17,7 @@ public class Animal {
         System.out.println("저는 " + name + "입니다. " + "종류는 " + species + "이고 나이는 " + age + "입니다.");
     }
 
-    public void makeSound() {
+    public abstract void makeSound() {
         System.out.println("...");
 
     }
