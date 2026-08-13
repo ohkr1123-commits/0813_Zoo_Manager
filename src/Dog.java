@@ -2,7 +2,7 @@ public class Dog extends Animal implements Trainable, Feedable {
 
 
     public Dog(String name, int age) {
-        super(name, "개", age);
+        super(name, AnimalType.DOG, age);
         }
 
     @Override

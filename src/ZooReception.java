@@ -5,7 +5,6 @@ public class ZooReception {
         Scanner sc = new Scanner(System.in);
         Animal[] zoo = new Animal[10];
         String name = null;
-        String species = null;
         int age = 0;
         int count = 0;
         boolean registered = false;
@@ -18,6 +17,7 @@ public class ZooReception {
             System.out.println("2. 동물 정보 보기");
             System.out.println("3. 훈련 가능한 동물 훈련하기");
             System.out.println("4. 먹이주기");
+            System.out.println("5. 동물상태보기");
             System.out.println("0. 종료");
             System.out.print("선택> ");
 
@@ -87,6 +87,52 @@ public class ZooReception {
                             ((Feedable) zoo[i]).feed(food);
                         }
                     }
+                    break;
+                case 5:
+                    System.out.println("===== 동물 건강상태 =====");
+
+                    System.out.print("동물 이름> ");
+                    String searchName = sc.nextLine();
+
+                    for (int i = 0; i < count; i++) {
+
+                        if (zoo[i].getName().equals(searchName)) {
+
+                            // 현재 건강상태 출력
+                            System.out.println(
+                                    zoo[i].getName() + "의 현재 건강상태: "
+                                            + zoo[i].getHealthStatus()
+                            );
+
+                            // 변경 여부 선택
+                            System.out.println("1. 건강상태 변경");
+                            System.out.println("0. 취소");
+                            System.out.print("선택> ");
+
+                            int healthChoice = sc.nextInt();
+                            sc.nextLine();
+
+                            if (healthChoice == 1) {
+
+                                HealthStatus[] statuses = HealthStatus.values();
+
+                                for (int j = 0; j < statuses.length; j++) {
+                                    System.out.println((j + 1) + ". " + statuses[j]);
+                                }
+
+                                System.out.print("변경할 상태> ");
+                                int statusChoice = sc.nextInt();
+                                sc.nextLine();
+
+                                zoo[i].setHealthStatus(statuses[statusChoice - 1]);
+
+                                System.out.println("건강상태가 변경되었습니다.");
+                            }
+
+                            break;
+                        }
+                    }
+
                     break;
                 case 0:
                     System.out.println("프로그램을 종료합니다");
