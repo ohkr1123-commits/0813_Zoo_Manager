@@ -11,6 +11,7 @@ public class ZooReception {
         boolean registered = false;
         boolean running = true;   // 반복문 종료를 제어하는 플래그
 
+
         while (running) {
             System.out.println("===== 동물원 접수 =====");
             System.out.println("1. 동물 등록");
@@ -46,21 +47,22 @@ public class ZooReception {
                     Animal animal = null;
                     switch (animalType) {
                         case 1:
-                            zoo[count] = new Dog(name, age);
+                            animal = new Dog(name, age);
                             break;
                         case 2:
-                            zoo[count] = new Cat(name, age);
+                            animal = new Cat(name, age);
                             break;
                         case 3:
-                            zoo[count] = new Bird(name, age);
+                            animal = new Bird(name, age);
                             break;
                         default:
                             System.out.println("잘못된 동물 종류 입니다.");
                     }
 
-                    registered = true;
-                    zoo[count++] = animal;
-                    System.out.println("동물이 등록되었습니다.");
+                    if (animal != null) {
+                        zoo[count++] = animal;
+                        System.out.println("동물이 등록되었습니다.");
+                    }
                     break;
                 case 2:
                     for (int i = 0; i < count; i++) {

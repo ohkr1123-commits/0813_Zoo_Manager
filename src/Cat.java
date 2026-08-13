@@ -2,9 +2,6 @@ public class Cat extends Animal implements Trainable {
 
     public Cat(String name, int age) {
         super(name, "고양이", age);
-        this.name = name;
-        this.age = age;
-
         }
 
     @Override
@@ -14,6 +11,6 @@ public class Cat extends Animal implements Trainable {
 
     @Override
     public void train() {
-        System.out.println(name + "훈련을 시작합니다. 앉아!");
+        System.out.println(getName() + "훈련을 시작합니다. 앉아!");
     }
 }
