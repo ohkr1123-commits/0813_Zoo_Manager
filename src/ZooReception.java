@@ -3,9 +3,11 @@ import java.util.Scanner;
 public class ZooReception {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        Animal[] zoo = new Animal[10];
         String name = null;
         String species = null;
         int age = 0;
+        int count = 0;
         boolean registered = false;
         boolean running = true;   // 반복문 종료를 제어하는 플래그
 
@@ -21,6 +23,10 @@ public class ZooReception {
 
             switch (choice) {
                 case 1:
+                    if (count == zoo.length) {
+                        System.out.println("더 이상 등록할 수 없습니다");
+                        break;
+                    }
                     System.out.print("동물 이름: ");
                     name = sc.nextLine();
                     System.out.print("동물 종류: ");
@@ -30,15 +36,12 @@ public class ZooReception {
                     sc.nextLine();
 
                     registered = true;
+                    zoo[count++] = new Animal(name, species, age);
                     System.out.println("동물이 등록되었습니다.");
                     break;
                 case 2:
-                    if (registered) {
-                        System.out.println("동물 이름: " + name);
-                        System.out.println("동물 종류: " + species);
-                        System.out.println("동물 나이: " + age);
-                    } else {
-                        System.out.println("동물에 대한 정보가 없습니다.");
+                    for (int i = 0; i < count; i++) {
+                        zoo[i].introduce();
                     }
                     break;
                 case 0:
