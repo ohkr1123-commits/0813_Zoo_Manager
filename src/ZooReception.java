@@ -29,19 +29,41 @@ public class ZooReception {
                     }
                     System.out.print("동물 이름: ");
                     name = sc.nextLine();
-                    System.out.print("동물 종류: ");
-                    species = sc.nextLine();
                     System.out.print("동물 나이: ");
                     age = sc.nextInt();
                     sc.nextLine();
 
+                    System.out.println("아래에서 동물 종류 선택> ");
+                    System.out.println("1. 개");
+                    System.out.println("2. 고양이");
+                    System.out.println("3. 새");
+
+                    int animalType = sc.nextInt();
+                    sc.nextLine();
+
+                    Animal animal = null;
+                    switch (animalType) {
+                        case 1:
+                            zoo[count] = new Dog(name, age);
+                            break;
+                        case 2:
+                            zoo[count] = new Cat(name, age);
+                            break;
+                        case 3:
+                            zoo[count] = new Bird(name, age);
+                            break;
+                        default:
+                            System.out.println("잘못된 동물 종류 입니다.");
+                    }
+
                     registered = true;
-                    zoo[count++] = new Animal(name, species, age);
+                    zoo[count++] = animal;
                     System.out.println("동물이 등록되었습니다.");
                     break;
                 case 2:
                     for (int i = 0; i < count; i++) {
                         zoo[i].introduce();
+                        zoo[i].makeSound();
                     }
                     break;
                 case 0:
